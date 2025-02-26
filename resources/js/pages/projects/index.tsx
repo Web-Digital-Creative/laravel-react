@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import AppLayout from '@/layouts/app-layout';
 import Heading from '@/components/heading';
 import { Pencil, Trash } from "lucide-react";
+import { Link } from "@inertiajs/react";
 import {
     Table,
     TableBody,
@@ -41,7 +42,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function ProjectIndex({ projects }: { projects: Project[] }) {
+export default function ProjectIndex({ projects }: { projects: { data: Project[], links: any } }) {
     const { data, setData, post, put, delete: destroy, processing, reset } = useForm({ name: "", description: "" });
     const [editing, setEditing] = useState<Project | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -83,7 +84,7 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
             <Head title="Projects" />
             <div className="px-4 py-6">
 
-                {projects.length > 0 ? (
+                {projects.data.length > 0 ? (
                     <>
                     <div className="flex justify-between items-center">
                             
@@ -145,7 +146,7 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {projects.map((project) => (
+                        {projects.data.map((project) => (
                         <TableRow key={project.id}>
                             <TableCell className="font-medium">{project.name}</TableCell>
                             <TableCell>{project.description}</TableCell>
@@ -169,6 +170,17 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
                         </TableRow>
                     </TableFooter> */}
                     </Table>
+
+                    <div className="flex justify-center space-x-2 mt-4">
+                        {projects.links.map((link: any, index: number) => (
+                            <Link
+                                key={index}
+                                href={link.url || "#"}
+                                className={`px-4 py-2 border ${link.active ? "bg-gray-800 text-white" : "bg-white"}`}
+                                dangerouslySetInnerHTML={{ __html: link.label }} // Laravel includes proper HTML
+                            />
+                        ))}
+                    </div>
                     </>
                 ) : (
                     <div className="min-h-[80vh] flex items-center justify-center">

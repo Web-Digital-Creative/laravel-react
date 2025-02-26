@@ -8,8 +8,10 @@ use Inertia\Inertia;
 
 class ProjectController extends Controller {
     public function index() {
+        $projects = Project::paginate(10); // Paginate with 10 items per page
+
         return Inertia::render('projects/index', [
-            'projects' => Project::latest()->get(),
+            'projects' => $projects,
         ]);
     }
 

@@ -147,19 +147,23 @@ export default function ProjectIndex({ projects }: { projects: { data: Project[]
                     </TableHeader>
                     <TableBody>
                         {projects.data.map((project) => (
-                        <TableRow key={project.id}>
-                            <TableCell className="font-medium">{project.name}</TableCell>
+                            <TableRow key={project.id}>
+                                <TableCell className="font-medium">
+                                <Link href={route("projects.show", project.id)} prefetch>
+                                    {project.name}
+                                </Link>
+                            </TableCell>
                             <TableCell>{project.description}</TableCell>
                             <TableCell>
-                                    <div className="flex gap-2">
-                                        <Button variant="outline" size="icon" onClick={() => handleEdit(project)}>
-                                            <Pencil className="w-4 h-4" />
-                                        </Button>
-                                        <Button variant="destructive" size="icon" onClick={() => handleDelete(project.id)}>
-                                            <Trash className="w-4 h-4" />
-                                        </Button>
-                                    </div>
-                                </TableCell>
+                                <div className="flex gap-2">
+                                    <Button variant="outline" className="py-1 text-sm h-6 rounded" onClick={() => handleEdit(project)}>
+                                        Edit
+                                    </Button>
+                                    <Button variant="destructive" className="py-1 text-sm h-6 rounded" onClick={() => handleDelete(project.id)}>
+                                        Delete
+                                    </Button>
+                                </div>
+                            </TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
@@ -176,7 +180,7 @@ export default function ProjectIndex({ projects }: { projects: { data: Project[]
                             <Link
                                 key={index}
                                 href={link.url || "#"}
-                                className={`px-4 py-2 border ${link.active ? "bg-gray-800 text-white" : "bg-white"}`}
+                                className={`px-4 py-1 border rounded-md ${link.active ? "bg-gray-800 text-white" : "bg-white"}`}
                                 dangerouslySetInnerHTML={{ __html: link.label }} // Laravel includes proper HTML
                             />
                         ))}

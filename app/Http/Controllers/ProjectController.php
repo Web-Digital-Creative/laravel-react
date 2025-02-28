@@ -26,6 +26,12 @@ class ProjectController extends Controller {
         return redirect()->route('projects.index')->with('success', 'Project created.');
     }
 
+    public function show(Project $project) {
+        return Inertia::render('projects/show', [
+            'project' => $project,
+        ]);
+    }
+
     public function update(Request $request, Project $project) {
         $request->validate([
             'name' => 'required|string|max:255',

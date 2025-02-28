@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, FileDown } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, FileDown, FileText, ClipboardCheck, CircleFadingArrowUp, Truck, BookDown, BriefcaseBusiness, Box, SquareUserRound, CircleUser, CarFront, Car } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -16,7 +16,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Project',
         url: '/projects',
-        icon: FileDown,
+        icon: BriefcaseBusiness,
     },
     {
         title: 'Sales Order',
@@ -26,22 +26,22 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Sales Invoice',
         url: '/sales-invoice',
-        icon: FileDown,
+        icon: ClipboardCheck,
     },
     {
         title: 'Work Order',
         url: '/work-order',
-        icon: FileDown,
+        icon: FileText,
     },
     {
         title: 'Production',
         url: '/production',
-        icon: FileDown,
+        icon: CircleFadingArrowUp,
     },
     {
         title: 'Shipment',
         url: '/shipment',
-        icon: FileDown,
+        icon: Truck,
     },
 ];
 
@@ -49,33 +49,33 @@ const masterNavItems: NavItem[] = [
     {
         title: 'Products',
         url: '/client',
-        icon: FileDown,
+        icon: Box,
     },
     {
         title: 'Client',
         url: '/client',
-        icon: LayoutGrid,
+        icon: SquareUserRound,
     },
     {
         title: 'Driver',
         url: '/client',
-        icon: FileDown,
+        icon: CircleUser,
     },
     {
         title: 'Verhicle',
         url: '/client',
-        icon: FileDown,
+        icon: Car,
     },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repository',
+        title: 'Files',
         url: 'https://github.com/laravel/react-starter-kit',
         icon: Folder,
     },
     {
-        title: 'Documentation',
+        title: 'Help Center',
         url: 'https://laravel.com/docs/starter-kits',
         icon: BookOpen,
     },
